@@ -12,7 +12,7 @@ public class YoutubeVideoIdFetcher {
 	private static final String GOOGLE_API_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=rating&q=";
 	private static final String KEY = "&key=";
 	private static final String GOOGLE_API_KEY = "AIzaSyC3oaWWtycObuHAiPWqQQ8PC013mwS4fv8";
-	
+
 	static String findYoutubeVideoId(String keyword) throws IOException {
 		keyword = keyword.replace(" ", "+");
 		String url = GOOGLE_API_SEARCH_URL + keyword + KEY + GOOGLE_API_KEY;
@@ -24,8 +24,7 @@ public class YoutubeVideoIdFetcher {
 
 	private static String getJson(String url, String mime) throws IOException {
 		Document doc = Jsoup.connect(url).header("Content-Type", mime).ignoreContentType(true).get();
-		String getJson = doc.text();
-		return getJson;
+		return doc.text();
 	}
 
 	private static String buildMime(String url) {
